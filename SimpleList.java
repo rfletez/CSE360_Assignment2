@@ -12,8 +12,7 @@ import java.util.*;
  * 		This file contains methods with their own functionalities, along
  * 		with new methods to implement, such as the append(), size(), first(), and last(). 
  * 
- * You can include the Github link on this JavaDoc, and on the comment body-tag in Submissions.
- * Github URL: 
+ * Github URL: https://github.com/rfletez/CSE360_Assignment2.git
  */
 
 public class SimpleList {
@@ -176,8 +175,64 @@ public class SimpleList {
 	}
 	
 	
-
+	/**
+	 * Looking for the first element in the list array
+	 * @return The first element in the list array or -1 
+	 */
+	public int first() {
+		if(count == 0) { //if the list is empty, it returns -1
+			return -1;
+		}
+		
+		int firstIndex = list[0];
+		return firstIndex;
+	}
 	
+	
+	/**
+	 * Looking for the last element in the list array
+	 * @return The last element in the list array or -1 
+	 */
+	public int last() {
+		if(count == 0) { //if the list is empty, it returns -1
+			return -1;
+		}
+		
+		int lastIndex = list[count-1];
+		return lastIndex;
+	}
+	
+	
+	/**
+	 * Appending the element to the end of the list
+	 * @param value An integer to be added to the end of the list array
+	 */
+	public void append(int value) {		
+		if(count == list.length) {
+			int increase = (int)list.length / 2;
+			
+			int size = list.length + increase;
+			int[] newArray = Arrays.copyOf(list, size);
+			
+			list = newArray;
+			
+			list[count] = value;
+		}
+		
+			int temp = value;
+			list[count] = temp;
+			count++;
+	}
+	
+	
+	/**
+	 * The current number of possible locations in the list
+	 * @return The number of empty indexes in the list
+	 */
+	public int size() {
+		int locations = list.length - count;
+		return locations;
+	}
 	
 	
 }//end of SimpleList class.
