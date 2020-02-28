@@ -40,15 +40,17 @@ public class SimpleList {
 	 */
 	public void add(int value) {
 		if(count == list.length) {
-			int increase = (int)list.length / 2; //(int)Math.floor(list.length*0.50);
+			//if list is full, another array is created to store the original array's elements.
+			
+			int increase = (int)list.length / 2;
 			
 			int size = list.length + increase;
 			int[] newArray = Arrays.copyOf(list, size);
 			
-			list = newArray; //Arrays.copyOf(newArray, size);
+			list = newArray;
 		}
 		
-			int temp = list[0];
+			int temp = list[0]; //storing the first element in list
 			int temp2;
 			for(int start = 0; start < count; start++) {
 				temp2 = list[start + 1];
@@ -56,7 +58,7 @@ public class SimpleList {
 				temp = temp2;
 			}
 			list[0] = value;
-			count++;
+			count = count + 1;
 	}
 	
 	
@@ -77,13 +79,13 @@ public class SimpleList {
 				index = start;
 				flag = true;
 				break; //this is to find the first index with the value, not to the last index.
+				
 				//If found, flag will be set to true.
 			}
  		}
 		
 		if(flag == true) {
 			//If flag is true, the size of the list will decrease.
-			//count = count - 1;
 			
 			int temp;
 			for(int start = index; start < count; start++) {
@@ -174,64 +176,7 @@ public class SimpleList {
 	}
 	
 	
-	/**
-	 * Looking for the first element in the list array
-	 * @return The first element in the list array or -1 
-	 */
-	public int first() {
-		if(count == 0) { //if the list is empty, it returns -1
-			return -1;
-		}
-		
-		int firstIndex = list[0];
-		return firstIndex;
-	}
-	
-	
-	/**
-	 * Looking for the last element in the list array
-	 * @return The last element in the list array or -1 
-	 */
-	public int last() {
-		if(count == 0) { //if the list is empty, it returns -1
-			return -1;
-		}
-		
-		int lastIndex = list[count-1];
-		return lastIndex;
-	}
-	
-	
-	/**
-	 * Appending the element to the end of the list
-	 * @param value An integer to be added to the end of the list array
-	 */
-	public void append(int value) {		
-		if(count == list.length) {
-			int increase = (int)list.length / 2;
-			
-			int size = list.length + increase;
-			int[] newArray = Arrays.copyOf(list, size);
-			
-			list = newArray;
-			
-			list[count] = value;
-		}
-		
-			int temp = value;
-			list[count] = temp;
-			count++;
-	}
-	
-	
-	/**
-	 * The current number of possible locations in the list
-	 * @return The number of empty indexes in the list
-	 */
-	public int size() {
-		int locations = list.length - count;
-		return locations;
-	}
+
 	
 	
 	
